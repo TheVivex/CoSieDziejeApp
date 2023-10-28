@@ -5,56 +5,56 @@
              xmlns:map="clr-namespace:Syncfusion.Maui.Maps;assembly=Syncfusion.Maui.Maps"
              xmlns:local="clr-namespace:WRWpr">
 
-    <StackLayout>
-        <Button Clicked="Centrowanie" Text="0"/>
-        <map:SfMaps>
-        <map:SfMaps.Layer>
-            <map:MapTileLayer x:Name="mapa" UrlTemplate = "https://tile.openstreetmap.org/{z}/{x}/{y}.png">
-                
-                //ustawienie srodka mapy
-                <map:MapTileLayer.Center>
-                    <map:MapLatLng Latitude="51.1103" Longitude="17.0589"/>
-                </map:MapTileLayer.Center>
-                
-                //Zbior markerkow
-                <map:MapTileLayer.Markers>
-                    <map:MapMarkerCollection>
-                        <map:MapMarker Latitude="51.1103" Longitude="17.0589"/>
-                    </map:MapMarkerCollection>
-                </map:MapTileLayer.Markers>
+    <Grid RowDefinitions="0.85*, 0.15*" ColumnDefinitions="*, *, *">
+        <map:SfMaps Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <map:SfMaps.Layer>
+                <map:MapTileLayer x:Name="mapa" UrlTemplate = "https://tile.openstreetmap.org/{z}/{x}/{y}.png" >
 
-                //Centrowanie po otwarciu aplikacji
-                <map:MapTileLayer.LatLngBounds>
-                    <map:MapLatLngBounds>
-                        <map:MapLatLngBounds.Northeast>
-                            <map:MapLatLng>
-                                <x:Arguments>
-                                    <x:Double>51.1103</x:Double>
-                                    <x:Double>17.0589</x:Double>
-                                </x:Arguments>
-                            </map:MapLatLng>
-                        </map:MapLatLngBounds.Northeast>
-                        <map:MapLatLngBounds.Southwest>
-                            <map:MapLatLng>
-                                <x:Arguments>
-                                    <x:Double>51.1103</x:Double>
-                                    <x:Double>17.0589</x:Double>
-                                </x:Arguments>
-                            </map:MapLatLng>
-                        </map:MapLatLngBounds.Southwest>
-                    </map:MapLatLngBounds>
-                </map:MapTileLayer.LatLngBounds>
+                    //ustawienie srodka mapy
+                    <map:MapTileLayer.Center>
+                        <map:MapLatLng Latitude="51.1103" Longitude="17.0589"/>
+                    </map:MapTileLayer.Center>
 
+                    //Zbior markerkow
+                    <map:MapTileLayer.Markers>
+                        <map:MapMarkerCollection>
+                            <map:MapMarker Latitude="51.1103" Longitude="17.0589"/>
+                        </map:MapMarkerCollection>
+                    </map:MapTileLayer.Markers>
+
+                    //Centrowanie po otwarciu aplikacji
+                    <map:MapTileLayer.LatLngBounds>
+                        <map:MapLatLngBounds>
+                            <map:MapLatLngBounds.Northeast>
+                                <map:MapLatLng>
+                                    <x:Arguments>
+                                        <x:Double>51.1103</x:Double>
+                                        <x:Double>17.0589</x:Double>
+                                    </x:Arguments>
+                                </map:MapLatLng>
+                            </map:MapLatLngBounds.Northeast>
+                            <map:MapLatLngBounds.Southwest>
+                                <map:MapLatLng>
+                                    <x:Arguments>
+                                        <x:Double>51.1103</x:Double>
+                                        <x:Double>17.0589</x:Double>
+                                    </x:Arguments>
+                                </map:MapLatLng>
+                            </map:MapLatLngBounds.Southwest>
+                        </map:MapLatLngBounds>
+                    </map:MapTileLayer.LatLngBounds>
 
 
-                 //customowanie zoomowania
-                <map:MapTileLayer.ZoomPanBehavior>
-                    <map:MapZoomPanBehavior ZoomLevel = "1" MinZoomLevel="1" MaxZoomLevel="20" EnableDoubleTapZooming="True"/>
-                </map:MapTileLayer.ZoomPanBehavior>
-                
-                
-            </map:MapTileLayer>
-        </map:SfMaps.Layer>
-    </map:SfMaps>
-    </StackLayout>
+
+                    //customowanie zoomowania
+                    <map:MapTileLayer.ZoomPanBehavior>
+                        <map:MapZoomPanBehavior ZoomLevel = "1" MinZoomLevel="1" MaxZoomLevel="20" EnableDoubleTapZooming="True"/>
+                    </map:MapTileLayer.ZoomPanBehavior>
+
+
+                </map:MapTileLayer>
+            </map:SfMaps.Layer>
+        </map:SfMaps>
+        <Button Clicked="Centrowanie" Grid.Row="1" Grid.Column="1" Text="0" IsVisible="True"/>
+    </Grid>
 </ContentPage>
