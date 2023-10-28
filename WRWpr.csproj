@@ -53,4 +53,10 @@
 		<PackageReference Include="Syncfusion.Maui.Maps" Version="23.1.42" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="MySql.Data">
+	    <HintPath>..\..\Bim\Bim\bin\Debug\net6.0\MySql.Data.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 </Project>
