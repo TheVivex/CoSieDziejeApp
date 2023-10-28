@@ -29,17 +29,6 @@ namespace WRWpr
 
         }
 
-        private void marker_PropertyChanged(object sender, EventArgs e)
-        {
-            if (variables.Default.g_first < 2)
-            {
-                variables.Default.g_first++;
-            }
-            else
-            {
-                variables.Default.g_lat = marker.Latitude.ToString();
-                variables.Default.g_lon = marker.Longitude.ToString();
-            }            
-        }
+        
     }
 }

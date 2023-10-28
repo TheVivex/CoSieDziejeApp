@@ -20,6 +20,16 @@ namespace WRWpr
             var location = mapa.GetLatLngFromPoint(e.Position);
             marker.Latitude = location.Latitude;
             marker.Longitude = location.Longitude;
+
+            //if (variables.Default.g_first < 2)
+            //{
+            //    variables.Default.g_first++;
+            //}
+            //else
+            //{
+            //    variables.Default.g_lat = marker.Latitude.ToString();
+            //    variables.Default.g_lon = marker.Longitude.ToString();
+            //}
         }
 
         protected override void OnDetachingFrom(ContentPage bindable)

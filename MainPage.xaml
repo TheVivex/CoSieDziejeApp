@@ -23,7 +23,7 @@
                         <map:MapTileLayer.Markers>
                             <map:MapMarkerCollection>
                                 <map:MapMarker x:Name="pozycja" Latitude="51.1103" Longitude="17.0589"/>
-                                <map:MapMarker x:Name="marker" PropertyChanged="marker_PropertyChanged" Latitude="51.1103" Longitude="17.0589"/>                                
+                                <map:MapMarker x:Name="marker"  Latitude="51.1103" Longitude="17.0589"/>                                
                             </map:MapMarkerCollection>
                         </map:MapTileLayer.Markers>
 
