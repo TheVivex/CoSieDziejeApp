@@ -64,7 +64,7 @@
             <ImageButton Source="home.png" Clicked="Centrowanie" Grid.Row="12" Grid.Column="9" Grid.RowSpan="2" Grid.ColumnSpan="2" IsVisible="True"/>
             <ImageButton Source="plus.png" Clicked="Dodawanie" Grid.Row="10" Grid.Column="9" Grid.RowSpan="2" Grid.ColumnSpan="2" IsVisible="True"/>
             <BoxView Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Column="9" Grid.Row="0"/>
-            <Button Clicked="Lista" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Column="9" Grid.Row="0"/>
+            <ImageButton Source="menu.png" Clicked="Lista" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Column="9" Grid.Row="0"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
