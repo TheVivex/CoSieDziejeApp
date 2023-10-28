@@ -9,7 +9,10 @@ namespace WRWpr
         {
             InitializeComponent();
         }
-        
+        private void Centrowanie(object sender, EventArgs e)
+        {
+            mapa.Center = new MapLatLng(51.1103, 17.0589);
+        }
        
     }
 }
