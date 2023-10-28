@@ -13,6 +13,20 @@ namespace WRWpr
         {
             mapa.Center = new MapLatLng(51.1103, 17.0589);
         }
-       
+
+        private void Profil(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dodawanie(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lista(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -9,8 +9,8 @@
         <local:MapsBehavior />
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <Grid RowDefinitions="0.85*, 0.15*" ColumnDefinitions="*, *, *">
-            <map:SfMaps x:Name="map" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+        <Grid RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *, *, *, *, *, *, *, *, *, *">
+            <map:SfMaps x:Name="map" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="11" Grid.RowSpan="16">
                 <map:SfMaps.Layer>
                     <map:MapTileLayer x:Name="mapa" UrlTemplate = "https://tile.openstreetmap.org/{z}/{x}/{y}.png">
 
@@ -60,7 +60,11 @@
                     </map:MapTileLayer>
                 </map:SfMaps.Layer>
             </map:SfMaps>
-            <Button Clicked="Centrowanie" Grid.Row="1" Grid.Column="1" Text="0" IsVisible="True"/>
+            <ImageButton Source="simple_avatar.png" Clicked="Profil" Grid.Row="14" Grid.Column="9" Grid.RowSpan="2" Grid.ColumnSpan="2" IsVisible="True"/>
+            <ImageButton Source="home.png" Clicked="Centrowanie" Grid.Row="12" Grid.Column="9" Grid.RowSpan="2" Grid.ColumnSpan="2" IsVisible="True"/>
+            <ImageButton Source="plus.png" Clicked="Dodawanie" Grid.Row="10" Grid.Column="9" Grid.RowSpan="2" Grid.ColumnSpan="2" IsVisible="True"/>
+            <BoxView Grid.ColumnSpan="2" Grid.RowSpan="10" Grid.Column="9" Grid.Row="0"/>
+            <Button Clicked="Lista" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Column="9" Grid.Row="0"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
