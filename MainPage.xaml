@@ -7,7 +7,51 @@
 
     <map:SfMaps>
         <map:SfMaps.Layer>
-            <map:MapShapeLayer ShapesSource="https://cdn.syncfusion.com/maps/map-data/world-map.json" />
+            <map:MapTileLayer UrlTemplate = "https://tile.openstreetmap.org/{z}/{x}/{y}.png">
+                
+                //ustawienie srodka mapy
+                <map:MapTileLayer.Center>
+                    <map:MapLatLng Latitude="51.1103" Longitude="17.0589"/>
+                </map:MapTileLayer.Center>
+                
+                //Zbior markerkow
+                <map:MapTileLayer.Markers>
+                    <map:MapMarkerCollection>
+                        <map:MapMarker Latitude="51.1103" Longitude="17.0589"/>
+                    </map:MapMarkerCollection>
+                </map:MapTileLayer.Markers>
+
+                //Centrowanie po otwarciu aplikacji
+                <map:MapTileLayer.LatLngBounds>
+                    <map:MapLatLngBounds>
+                        <map:MapLatLngBounds.Northeast>
+                            <map:MapLatLng>
+                                <x:Arguments>
+                                    <x:Double>51.1103</x:Double>
+                                    <x:Double>17.0589</x:Double>
+                                </x:Arguments>
+                            </map:MapLatLng>
+                        </map:MapLatLngBounds.Northeast>
+                        <map:MapLatLngBounds.Southwest>
+                            <map:MapLatLng>
+                                <x:Arguments>
+                                    <x:Double>51.1103</x:Double>
+                                    <x:Double>17.0589</x:Double>
+                                </x:Arguments>
+                            </map:MapLatLng>
+                        </map:MapLatLngBounds.Southwest>
+                    </map:MapLatLngBounds>
+                </map:MapTileLayer.LatLngBounds>
+
+
+
+                 //customowanie zoomowania
+                <map:MapTileLayer.ZoomPanBehavior>
+                    <map:MapZoomPanBehavior ZoomLevel = "1" MinZoomLevel="1" MaxZoomLevel="20" EnableDoubleTapZooming="True"/>
+                </map:MapTileLayer.ZoomPanBehavior>
+                
+                
+            </map:MapTileLayer>
         </map:SfMaps.Layer>
     </map:SfMaps>
 

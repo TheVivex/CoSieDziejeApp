@@ -1,14 +1,15 @@
-﻿namespace WRWpr
+﻿using Syncfusion.Maui.Maps;
+
+namespace WRWpr
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
         }
-
+        
        
     }
 }
