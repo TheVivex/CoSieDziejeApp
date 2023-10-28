@@ -54,4 +54,13 @@
 		<PackageReference Include="Syncfusion.Maui.Maps" Version="23.1.42" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Dodaj.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Profil.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

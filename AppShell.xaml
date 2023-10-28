@@ -4,10 +4,28 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WRWpr"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    x:Name="Shell_main">
 
-    <ShellContent
+    
+    <FlyoutItem Title="Menu" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+        Title="Mapa"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" 
+        Icon="home.png"/>
 
+        <ShellContent
+        Title="Dodaj"
+        ContentTemplate="{DataTemplate local:Dodaj}"
+        Route="Dodaj"
+        Icon="plus.png"/>
+
+        <ShellContent
+        Title="Profil"
+        ContentTemplate="{DataTemplate local:Profil}"
+        Route="Profil"
+        Icon="simple_avatar.png"/>
+    </FlyoutItem>
 </Shell>
