@@ -55,6 +55,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="variables.Designer.cs">
+	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>variables.settings</DependentUpon>
+	  </Compile>
 	  <Compile Update="Wydarzenia.xaml.cs">
 	    <DependentUpon>Wydarzenia.xaml</DependentUpon>
 	  </Compile>
@@ -70,6 +75,13 @@
 	  <MauiXaml Update="Profil.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="variables.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>variables.Designer.cs</LastGenOutput>
+	  </None>
 	</ItemGroup>
 
 </Project>

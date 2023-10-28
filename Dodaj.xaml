@@ -4,6 +4,6 @@
              x:Class="WRWpr.Dodaj"
              Title="Dodaj">
     <VerticalStackLayout>
-        <Label Text="JD"/>
+        <Label x:Name="test_lb" Text="JD"/>
     </VerticalStackLayout>
 </ContentPage>
