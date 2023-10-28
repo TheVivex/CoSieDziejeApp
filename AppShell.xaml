@@ -27,5 +27,11 @@
         ContentTemplate="{DataTemplate local:Profil}"
         Route="Profil"
         Icon="simple_avatar.png"/>
+        
+        <ShellContent
+        Title="Wydarzenia"
+        ContentTemplate="{DataTemplate local:Wydarzenia}"
+        Route="Wydarzenia"
+        Icon="menu.png"/>
     </FlyoutItem>
 </Shell>

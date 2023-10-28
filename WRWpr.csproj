@@ -55,7 +55,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Wydarzenia.xaml.cs">
+	    <DependentUpon>Wydarzenia.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Dodaj.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Wydarzenia.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Profil.xaml">
