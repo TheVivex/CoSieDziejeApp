@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WRWpr.Wydarzenia"
              Title="Wydarzenia">
-    <VerticalStackLayout>
-        <Label 
-            Text="Wydarzenia!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="0.10*, 0.90*" ColumnDefinitions="0.20*, 0.40*, 0.40*" Padding="10" Margin="10">
+        <Label Text="Kat." Grid.Column="0" Grid.Row="0"/>
+        <Label Text="      Wydarzenie" Grid.Column="1" Grid.Row="0"/>
+        <Label Text="              Miejsce" Grid.Column="2" Grid.Row="0"/>
+        <ScrollView Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0">
+            
+        </ScrollView>
+    </Grid> 
 </ContentPage>
