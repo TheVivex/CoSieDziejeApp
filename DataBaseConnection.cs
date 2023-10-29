@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Enumeration;
 using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Microsoft.Maui.Storage;
 using MySql.Data.MySqlClient;
 
 namespace openstreetmapAPI
@@ -14,8 +17,8 @@ namespace openstreetmapAPI
     {
         private string connectionString = string.Format(@"server=51.83.131.143;" +
             "userid=hack_pr;password=hackpr123;database={0}", "hack_pr");
-        class Marker 
-        { 
+        class Marker
+        {
             public int id;
             public string short_name;
             public string description;
@@ -30,7 +33,7 @@ namespace openstreetmapAPI
             public string lat;
             public string lon;
 
-            public Marker () { }
+            public Marker() { }
 
             public Marker(int id, string short_name, string description, int author_id, int date, string time, int isOpen, string price, int category, string adres, string website, string lat, string lon)
             {
@@ -104,22 +107,37 @@ namespace openstreetmapAPI
             return final;
         }
 
-        public int AddNewMarker(int author_id, string short_name, int isOpen, string description, string date, string time_start, string time_stop, int category, string price, string website, string lat, string lon)
+        public int AddNewMarker(int author_id, string short_name, int isOpen, string description, string date, string time_start, string time_stop, int category, string price, string website, string lat, string lon, string filename)
         {
             //legenda 
             // 0 - dodano pomyślnie
             // 1 - błąd
+
+            int future_id = 0;
             try
             {
                 using var con = new MySqlConnection(connectionString);
                 con.Open();
+                string query = string.Format("SHOW TABLE STATUS LIKE 'markers';");
+                MySqlCommand command = new MySqlCommand(query, con);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        future_id = reader.GetInt32("Auto_increment") + 1;
+                    }
+                }
+                if (filename != "")
+                {
+                    InsertPhoto(future_id, filename);
+                }
                 string time = string.Format("{0};{1}", time_start, time_stop);
 
                 List<string> adress = Adres(lat.ToString(), lon.ToString());
                 string adres = string.Format("{0} {1};{2};{3}", adress[1], adress[0], adress[2], adress[3]);
-                string query = string.Format("INSERT INTO `markers` (`id`, `short_name`, `description`, `author_id`, `date`, `time`, `isOpen`, `price`, `category`, `adres`, `website`, `lat`, `lon`) VALUES (NULL, '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}');",
+                query = string.Format("INSERT INTO `markers` (`id`, `short_name`, `description`, `author_id`, `date`, `time`, `isOpen`, `price`, `category`, `adres`, `website`, `lat`, `lon`) VALUES (NULL, '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}');",
                     short_name, description, author_id, date, time, isOpen, price, category, adres, website, lat, lon);
-                MySqlCommand command = new MySqlCommand(query, con);
+                command = new MySqlCommand(query, con);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -127,7 +145,6 @@ namespace openstreetmapAPI
 
                     }
                 }
-
 
                 con.Close();
                 return 0;
@@ -137,7 +154,7 @@ namespace openstreetmapAPI
                 return 1;
             }
         }
-        
+
         public List<string> GetMarkerInfo(int id)
         {
             //Legenda indeksów
@@ -155,7 +172,7 @@ namespace openstreetmapAPI
             int author_id = 1;
             int categorie_id = 2115;
             using var con = new MySqlConnection(connectionString);
-            con.Open();            
+            con.Open();
             string query = string.Format("SELECT * FROM markers WHERE id = '{0}';", id);
             MySqlCommand command = new MySqlCommand(query, con);
 
@@ -170,7 +187,7 @@ namespace openstreetmapAPI
                     render.Add(reader.GetString("date"));
                     render.Add(reader.GetString("time"));
                     render.Add(reader.GetInt32("isOpen").ToString());
-                    render.Add(reader.GetString("price"));                    
+                    render.Add(reader.GetString("price"));
                     render.Add(reader.GetString("adres"));
                     render.Add(reader.GetString("website"));
                 }
@@ -213,7 +230,7 @@ namespace openstreetmapAPI
 
             public listaMarkerow() { }
 
-            public listaMarkerow(int id, int cat_id, string name, string lat,string lon)
+            public listaMarkerow(int id, int cat_id, string name, string lat, string lon)
             {
                 this.id = id;
                 this.cat_id = cat_id;
@@ -225,6 +242,12 @@ namespace openstreetmapAPI
 
         public List<listaMarkerow> Markers()
         {
+            //Legenda
+            //0 - id markera
+            //1 - id kategorii
+            //2 - nazwa markera
+            //3 - lat
+            //4 - long
             List<listaMarkerow> render = new List<listaMarkerow>();
             using var con = new MySqlConnection(connectionString);
             con.Open();
@@ -241,8 +264,77 @@ namespace openstreetmapAPI
             con.Close();
             return render;
         }
+        public async void test(int m_id, string filename)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO images (id, markes_id, img) VALUES (NULL, @markes_id, @ImageData)", connection))
+                {
+
+                    byte[] imageData = File.ReadAllBytes(filename);
+
+                    cmd.Parameters.Add("@markes_id", MySqlDbType.Int32).Value = m_id;
+                    cmd.Parameters.Add("@ImageData", MySqlDbType.Blob).Value = imageData;
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                }
+            }
+        }
+        public int InsertPhoto(int m_id, string filename)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.OpenAsync();
+
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO images (id, markes_id, img) VALUES (NULL, @markes_id, @ImageData)", connection))
+                {
+
+                    byte[] imageData = File.ReadAllBytes(filename);
+
+                    cmd.Parameters.Add("@markes_id", MySqlDbType.Int32).Value = m_id;
+                    cmd.Parameters.Add("@ImageData", MySqlDbType.Blob).Value = imageData;
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                }
+            }
+            return 0;
+        }
+        public byte[] streamFile;
+        public void GetPhoto(int m_id)
+        {
+            //Co przy zdj dodać!
+            //BitmapImage bitmap = new BitmapImage();
+            //using (MemoryStream stream = new MemoryStream(connection.streamFile))
+            //{
+            //    bitmap.BeginInit();
+            //    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            //    bitmap.StreamSource = stream;
+            //    bitmap.EndInit();
+            //}
+            //img_img.Source = bitmap;
 
 
-    
+
+            using var con = new MySqlConnection(connectionString);
+            con.Open();
+            string query = string.Format("SELECT img FROM images WHERE markes_id = '{0}'", m_id);
+            MySqlCommand command = new MySqlCommand(query, con);
+            byte[] imageData;
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    imageData = (byte[])reader["img"];
+                    streamFile = imageData;
+                }
+            }
+
+            con.Close();
+        }
+
     }
 }
