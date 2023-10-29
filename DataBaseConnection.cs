@@ -289,7 +289,7 @@ namespace openstreetmapAPI
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                connection.OpenAsync();
+                connection.Open();
 
                 using (MySqlCommand cmd = new MySqlCommand("INSERT INTO images (id, markes_id, img) VALUES (NULL, @markes_id, @ImageData)", connection))
                 {
