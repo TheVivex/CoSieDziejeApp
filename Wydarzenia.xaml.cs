@@ -14,7 +14,6 @@ public partial class Wydarzenia : ContentPage
 		InitializeComponent();
 
         List<string> list = new List<string>();
-        connection.test(1, "s");
         List<listaMarkerow> lista = connection.Markers();
         List<string> mar = new List<string>();
         foreach (listaMarkerow p in lista)

@@ -9,14 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Maui.Storage;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace openstreetmapAPI
 {
     class DataBaseConnection
     {
-        private string connectionString = string.Format(@"server=51.83.131.143;" +
-            "userid=hack_pr;password=hackpr123;database={0}", "hack_pr");
+
+        private string connectionString = string.Format(@"Server=51.83.131.143;" +
+            "User ID=hack_pr;Password=hackpr123;Database={0};SSL Mode=None", "hack_pr");
+
         class Marker
         {
             public int id;
