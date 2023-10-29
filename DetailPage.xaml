@@ -6,6 +6,7 @@
     <VerticalStackLayout>
         <Label 
             Text= "TAK!"
+            x:Name="label"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <CollectionView x:Name="eventEventName">
