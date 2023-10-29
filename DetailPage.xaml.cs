@@ -1,8 +1,13 @@
+using openstreetmapAPI;
+using static openstreetmapAPI.DataBaseConnection;
+
 namespace WRWpr;
 
 public partial class DetailPage : ContentPage
 {
-    private string selectedEventName;
+    public string selectedEventName;
+
+    DataBaseConnection connection3 = new DataBaseConnection();
 
     public DetailPage(string eventEventName)
 	{
