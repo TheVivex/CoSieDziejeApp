@@ -13,7 +13,13 @@
             <map:SfMaps x:Name="map" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="11" Grid.RowSpan="16">
                 <map:SfMaps.Layer>
                     <map:MapTileLayer x:Name="mapa" UrlTemplate = "https://tile.openstreetmap.org/{z}/{x}/{y}.png">
-
+                        <map:MapTileLayer.MarkerTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Image Source="location_on.png" HeightRequest="30" WidthRequest="30"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </map:MapTileLayer.MarkerTemplate>
                         //ustawienie srodka mapy
                         <map:MapTileLayer.Center>
                             <map:MapLatLng Latitude="51.1103" Longitude="17.0589"/>
