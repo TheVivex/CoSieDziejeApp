@@ -6,7 +6,7 @@ Aplikacja stoworzona na potrzeby wydarzenia BEST Hacks 2023. Projekt umożliwia 
 
 
 ## Przed startem
-Przed rozpoczęciem pracy należy utowrzyć bazę danych MySQL wedug specjalnych instrukcji oraz uzupełenie danych logowania jak i klucza Syncfusion w pliku keyAuth.cs
+Przed rozpoczęciem pracy należy utworzyć bazę danych MySQL wedug specjalnych instrukcji oraz uzupełenie danych logowania jak i klucza Syncfusion w pliku keyAuth.cs
 
 ```c#
 public static string SyncfusionKey = "your key";
