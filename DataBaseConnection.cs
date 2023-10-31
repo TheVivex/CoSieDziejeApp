@@ -10,14 +10,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Maui.Storage;
 using MySqlConnector;
+using WRWpr;
 
 namespace openstreetmapAPI
 {
     class DataBaseConnection
     {
-
-        private string connectionString = string.Format(@"Server=51.83.131.143;" +
-            "User ID=hack_pr;Password=hackpr123;Database={0};SSL Mode=None", "hack_pr");
+        static private string connectionString = keyAuth.MySQLKey;
 
         class Marker
         {
