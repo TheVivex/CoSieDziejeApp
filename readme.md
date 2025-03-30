@@ -2,7 +2,7 @@
 [![Wersja](https://img.shields.io/badge/Wersja-1.0-brightgreen)](https://github.com/TheVivex/HackWR2023)
 # ,,Co się dzieje´´ App
 
-Aplikacja stoworzona na potrzeby wydarzenia BEST Hacks 2023. Projekt umożliwia szybszą, łatwiejszą oraz bardziej intuicyjną możliwość organizowania oraz komunikowania o przeróżnych wydarzeniach. Rozwiązanie ,,Co się dzieje´´ jest projektem studendzkim utworzonym dla każdego począwszy od organizacji takich jak Miejskie Ośrodki Kultury do miejszch grup.
+Aplikacja stoworzona na potrzeby wydarzenia BEST Hacks 2023. Projekt umożliwia szybszą, łatwiejszą oraz bardziej intuicyjną możliwość organizowania oraz komunikowania o przeróżnych wydarzeniach. Rozwiązanie ,,Co się dzieje´´ jest projektem studenckim utworzonym dla każdego, począwszy od organizacji takich jak Miejskie Ośrodki Kultury czy miejsze grupy.
 
 
 ## Przed startem
